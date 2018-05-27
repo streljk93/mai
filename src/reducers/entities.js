@@ -2,18 +2,38 @@ import { getId } from '../ownlib/id';
 
 const initialState = [
     {
-        id: getId(),
-        name: '',
+        id: '_23asdj38ldd',
+        name: 'Цeль',
         type: 'target',
     },
     {
-        id: getId(),
-        name: '',
+        id: '_13asdj38aa',
+        name: 'Критерий 1',
         type: 'criterion',
     },
     {
-        id: getId(),
-        name: '',
+        id: '_wwssdj38aa',
+        name: 'Критерий 2',
+        type: 'criterion',
+    },
+    {
+        id: '_aishdgakl3',
+        name: 'Критерий 3',
+        type: 'criterion',
+    },
+    {
+        id: '_i38hnvasdg',
+        name: 'Альтернатива 1',
+        type: 'alternative',
+    },
+    {
+        id: '_aj38sbakdd',
+        name: 'Альтернатива 2',
+        type: 'alternative',
+    },
+    {
+        id: '_i383gasdfe',
+        name: 'Альтернатива 3',
         type: 'alternative',
     },
 ];
@@ -23,9 +43,7 @@ const entities = (state = initialState, action) => {
 
         case 'ADD_ENTITY':
             return [...state, {
-                id: getId(),
-                name: action.payload.name,
-                type: action.payload.type,
+                ...action.payload
             }];
 
         case 'EDIT_ENTITY':

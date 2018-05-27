@@ -3,7 +3,7 @@ import { Segment, Container, Input, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 export default function (props) {
-    var activeItem = window.location.pathname;
+    const activeItem = '/' + window.location.pathname.slice(1).split('/')[0];
     return (
         <Segment style={{
             background: '#F2F2F2',
@@ -23,7 +23,7 @@ export default function (props) {
                             active={activeItem === '/'}
                         />
                     </Link>
-                    <Link to="/tables">
+                    <Link to="/tables/_23asdj38ldd">
                         <Menu.Item
                             icon='table'
                             name='Таблицы'

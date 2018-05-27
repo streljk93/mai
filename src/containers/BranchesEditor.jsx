@@ -3,9 +3,11 @@ import {
     addEntity,
     editEntity,
     deleteEntity,
-    addEdge,
+    addAllEdges,
     deleteEdge,
-    deleteGroupEdge
+    deleteAllEdges,
+    addTable,
+    deleteAllTables
 } from '../actions';
 import Branches from '../components/Branches';
 
@@ -13,13 +15,15 @@ const mapStateToProps = (state) => {
     return {
         entities: state.entities,
         edges: state.edges,
+        tables: state.tables,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onAddEntity: (name, type) => {
-            dispatch(addEntity({ name, type }));
+            const result = dispatch(addEntity({ name, type }));
+            return result.payload;
         },
         onEditEntity: (id, name) => {
             dispatch(editEntity({ id, name }));
@@ -27,14 +31,21 @@ const mapDispatchToProps = (dispatch) => {
         onDeleteEntity: (id) => {
             dispatch(deleteEntity(id));
         },
-        onAddEdge: (source, target) => {
-            dispatch(addEdge({ source, target }));
+        onAddAllEdges: (edges) => {
+            dispatch(addAllEdges(edges));
         },
         onDeleteEdge: (id) => {
             dispatch(deleteEdge(id));
         },
-        onDeleteGroupEdge: (source) => {
-            dispatch(deleteGroupEdge(source));
+        onDeleteAllEdges: () => {
+            dispatch(deleteAllEdges());
+        },
+        onAddTable: (source, matrix) => {
+            const result = dispatch(addTable({ source, matrix }));
+            return result;
+        },
+        onDeleteAllTables: () => {
+            dispatch(deleteAllTables());
         },
     };
 };

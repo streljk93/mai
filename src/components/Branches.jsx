@@ -13,27 +13,27 @@ export default function (props) {
             <Form style={{textAlign: 'center', marginBottom: '50px'}}>
                 <Target
                     entities={props.entities}
-                    edges={props.edges}
                     onEditEntity={props.onEditEntity.bind(this)}
-                    onAddEdge={props.onAddEdge.bind(this)}
-                    onDeleteEdge={props.onDeleteEdge.bind(this)}
                 />
                 <Criterions
-                    entities={props.entities.filter((e) => e.type === 'criterion' || e.type === 'alternative')}
+                    entities={props.entities}
                     onAddEntity={props.onAddEntity.bind(this)}
                     onEditEntity={props.onEditEntity.bind(this)}
                     onDeleteEntity={props.onDeleteEntity.bind(this)}
-                    onAddEdge={props.onAddEdge.bind(this)}
-                    onDeleteEdge={props.onDeleteEdge.bind(this)}
-                    onDeleteGroupEdge={props.onDeleteGroupEdge.bind(this)}
+
+                    edges={props.edges}
+                    onAddAllEdges={props.onAddAllEdges.bind(this)}
+                    onDeleteAllEdges={props.onDeleteAllEdges.bind(this)}
+
+                    tables={props.tables}
+                    onAddTable={props.onAddTable.bind(this)}
+                    onDeleteAllTables={props.onDeleteAllTables.bind(this)}
                 />
                 <Alternatives
-                    entities={props.entities.filter((e) => e.type === 'alternative')}
+                    entities={props.entities}
                     onAddEntity={props.onAddEntity.bind(this)}
                     onEditEntity={props.onEditEntity.bind(this)}
                     onDeleteEntity={props.onDeleteEntity.bind(this)}
-                    onAddEdge={props.onAddEdge.bind(this)}
-                    onDeleteEdge={props.onDeleteEdge.bind(this)}
                 />
             </Form>
         </div>
