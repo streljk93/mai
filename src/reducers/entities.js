@@ -41,6 +41,9 @@ const initialState = [
 const entities = (state = initialState, action) => {
     switch (action.type) {
 
+        case 'UPLOAD_ENTITIES':
+            return action.payload;
+
         case 'ADD_ENTITY':
             return [...state, {
                 ...action.payload

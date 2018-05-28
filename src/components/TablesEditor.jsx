@@ -50,6 +50,12 @@ export default class TablesEditor extends React.Component {
                             entities={this.props.entities}
                             edges={this.props.edges}
                             onEditMatrix={this.props.onEditMatrix.bind(this)}
+                            onCalculationGM = {this.props.onCalculationGM.bind(this)}
+                            onCalculationSGM = {this.props.onCalculationSGM.bind(this)}
+                            onCalculationNVP = {this.props.onCalculationNVP.bind(this)}
+                            onCalculationLMAX = {this.props.onCalculationLMAX.bind(this)}
+                            onCalculationCI = {this.props.onCalculationCI.bind(this)}
+                            onCalculationCR = {this.props.onCalculationCR.bind(this)}
                         />
                     )}
 

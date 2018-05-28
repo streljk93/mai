@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Dropdown, Icon } from 'semantic-ui-react';
+import { Table, Dropdown, Icon, Label } from 'semantic-ui-react';
 
 export default class TableEditor extends React.Component {
 
@@ -27,6 +27,20 @@ export default class TableEditor extends React.Component {
         ];
     }
 
+    // componentWillUpdate(nextProps, nextState) {
+    //     console.log(nextProps.data.matrix === this.props.data.matrix);
+    // }
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log(prevProps.data.matrix === this.props.data.matrix);
+    //     // const source = this.props.data.source;
+    //     this.props.onCalculationGM(source);
+    //     this.props.onCalculationSGM(source);
+    //     this.props.onCalculationNVP(source);
+    //     this.props.onCalculationLMAX(source);
+    //     this.props.onCalculationCI(source);
+    //     this.props.onCalculationCR(source);
+    // }
+
     initialize() {
         this.entity = this.props.entities.filter(e => e.id === this.props.data.source)[0];
         this.entities = [];
@@ -42,7 +56,7 @@ export default class TableEditor extends React.Component {
 
     render() {
         this.initialize();
-        let count = 0;
+        let count = -1;
         return (
             <Table celled definition>
                 <Table.Header>
@@ -60,7 +74,7 @@ export default class TableEditor extends React.Component {
                 <Table.Body>
 
                     {this.entities.map((entityRow, indexRow) => {
-                        this.count++;
+                        count++;
                         return (
                             <Table.Row key={'row_' + entityRow.id}>
                                 <Table.Cell collapsing>{entityRow.name}</Table.Cell>
@@ -74,14 +88,21 @@ export default class TableEditor extends React.Component {
                                                 options={this.options}
                                                 value={v}
                                                 onChange={(e, { value }) => {
+                                                    const source = this.props.data.source;
                                                     this.props.onEditMatrix(
-                                                        this.props.data.source,
+                                                        source,
                                                         indexRow,
                                                         indexCol,
                                                         value
                                                     );
+                                                    this.props.onCalculationGM(source);
+                                                    this.props.onCalculationSGM(source);
+                                                    this.props.onCalculationNVP(source);
+                                                    this.props.onCalculationLMAX(source);
+                                                    this.props.onCalculationCI(source);
+                                                    this.props.onCalculationCR(source);
                                                 }}
-                                                disabled={v === 1}
+                                                disabled={indexCol === count}
                                             />
                                         </Table.Cell>
                                     );
@@ -92,6 +113,26 @@ export default class TableEditor extends React.Component {
                     })}
 
                 </Table.Body>
+                <Table.Footer>
+                    <Table.Row>
+                        <Table.Cell
+                            colSpan={this.props.data.matrix.length + 1}
+                        >
+                            <Label basic>
+                                ИС
+                                <Label.Detail>{(this.props.data.ci) ? this.props.data.ci : 'NaN'}</Label.Detail>
+                            </Label>
+                            <Label color={((this.props.data.cr * 100) < 10) ? 'green' : ((this.props.data.cr * 100) < 20) ? 'orange' : 'red' } basic>
+                                ОС
+                                <Label.Detail>{this.props.data.cr * 100}%</Label.Detail>
+                            </Label>
+                            <Label>
+                                ОС должно быть &lt; 10%, допускается &lt; 20%
+                            </Label>
+                                
+                        </Table.Cell>
+                    </Table.Row>
+                </Table.Footer>
             </Table>
         );
         

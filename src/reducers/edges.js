@@ -3,6 +3,9 @@ import { getId } from '../ownlib/id';
 const edges = (state = [], action) => {
     switch (action.type) {
 
+        case 'UPLOAD_EDGES':
+            return action.payload;
+
         case 'ADD_ALL_EDGES':
             return action.payload.map(edge => {
                 return {
