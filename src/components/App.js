@@ -13,24 +13,6 @@ class App extends Component {
         <Container style={{ marginTop: '80px', fontSize: '12px' }}>
             <div style={{ marginBottom: '10px' }}>
                 <Label>
-                    <Icon name='user outline' />
-                    Руководитель
-                    <Label.Detail>Путивцева Наталья Павловна</Label.Detail>
-                </Label>
-            </div>
-            <div style={{ marginBottom: '10px' }}>
-                <Label>
-                    <Icon name='user' />
-                    Разработчик
-                    <Label.Detail>
-                        <a href="http://strel-jk.ru/" target="_blank" style={{color: '#5C5C5C'}}>
-                            Стерльников Евгений Михайлович
-                        </a>
-                    </Label.Detail>
-                </Label>
-            </div>
-            <div style={{ marginBottom: '10px' }}>
-                <Label>
                     <Icon name='code' />
                     Версия
                     <Label.Detail>0.0.1</Label.Detail>
