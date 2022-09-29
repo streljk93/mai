@@ -11,7 +11,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "1.1.4",
-    "recharts": "^1.0.0-beta.10",
+    "recharts": "^2.1.14",
     "redux": "^3.7.2",
     "semantic-ui-css": "^2.3.1",
     "semantic-ui-react": "^0.80.0",
